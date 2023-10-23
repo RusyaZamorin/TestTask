@@ -9,35 +9,43 @@ namespace TestTaskProject.UI
     public class MovementTrajectoryViewer : MonoBehaviour, IInitializable
     {
         public LineRenderer LineRenderer;
-        
+
         public float LineZPosition = -1;
+
         private MovementTrajectory movementTrajectory;
         private PlayableCharacter character;
         private Vector3 startPosition;
 
         [Inject]
-        public void Construct(MovementTrajectory movementTrajectory, PlayableCharacter playableCharacter)
+        public void Construct(
+            MovementTrajectory movementTrajectory,
+            PlayableCharacter playableCharacter)
         {
-            this.character = playableCharacter;
+            character = playableCharacter;
             this.movementTrajectory = movementTrajectory;
         }
 
         public void Initialize()
         {
-            movementTrajectory.PointWasAdded += MovementTrajectoryOnPointWasAdded;
+            movementTrajectory.PointWasAdded += _ => UpdateLine();
             movementTrajectory.Cleared += ClearLineRenderer;
         }
 
-        private void MovementTrajectoryOnPointWasAdded(Vector3 obj)
+        private void UpdateLine()
         {
             if (movementTrajectory.Points.Count == 1)
                 startPosition = ConvertToLinePosition(character.transform.position);
 
-            var points = new List<Vector3> { startPosition };
-            points.AddRange(movementTrajectory.Points.Select(ConvertToLinePosition));
+            var positions = new List<Vector3> { startPosition };
 
-            LineRenderer.positionCount = points.Count;
-            LineRenderer.SetPositions(points.ToArray());
+            var notCompletedPositions = movementTrajectory.Points
+                .Select(ConvertToLinePosition)
+                .ToList();
+
+            positions.AddRange(notCompletedPositions);
+
+            LineRenderer.positionCount = positions.Count;
+            LineRenderer.SetPositions(positions.ToArray());
         }
 
         private Vector3 ConvertToLinePosition(Vector3 point) =>

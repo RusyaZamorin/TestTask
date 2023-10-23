@@ -519,7 +519,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1598127242}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 10
+  m_MaxValue: 15
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LineRenderer: {fileID: 1039842379}
-  LineZPosition: -1
+  LineZPosition: 1
 --- !u!4 &1039842378
 Transform:
   m_ObjectHideFlags: 0
@@ -662,8 +662,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0.8674295, b: 0, a: 1}
+      key1: {r: 1, g: 0.8674295, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -686,8 +686,8 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
-      m_ColorSpace: -1
+      m_Mode: 1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

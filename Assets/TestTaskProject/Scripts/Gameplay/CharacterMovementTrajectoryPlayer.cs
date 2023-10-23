@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using TestTaskProject.Services;
 using UnityEngine;
 using Zenject;
@@ -12,6 +13,8 @@ namespace TestTaskProject.Gameplay
         private MovementTrajectory movementTrajectory;
 
         private bool movementIsPlaying;
+
+        public event Action<Vector3> ArrivedOnPoint; 
 
         [Inject]
         public CharacterMovementTrajectoryPlayer(
@@ -35,6 +38,7 @@ namespace TestTaskProject.Gameplay
             {
                 var point = movementTrajectory.Points[index];
                 await characterMover.MoveTo(point);
+                ArrivedOnPoint?.Invoke(point);
             }
 
             movementTrajectory.Clear();
