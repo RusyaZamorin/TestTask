@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TestTaskProject.Runtime.Services
+namespace TestTaskProject.Services
 {
     public interface IInputService
     {

@@ -1,13 +1,15 @@
-﻿using TestTaskProject.Runtime.Gameplay;
-using TestTaskProject.Runtime.Services;
+﻿using TestTaskProject.Gameplay;
+using TestTaskProject.Services;
+using TestTaskProject.UI;
 using Zenject;
 
-namespace TestTaskProject.Runtime.Installers
+namespace TestTaskProject.Installers
 {
     public class GameplaySceneInstaller : MonoInstaller
     {
         public MonoBehaviourInputService MonoBehaviourInputService;
         public PlayableCharacter PlayableCharacter;
+        public MovementTrajectoryViewer MovementTrajectoryViewer;
 
         public override void InstallBindings()
         {
@@ -18,6 +20,8 @@ namespace TestTaskProject.Runtime.Installers
 
             Container.BindInterfacesAndSelfTo<CharacterMovementTrajectoryPlayer>().AsSingle();
             Container.Bind<MovementTrajectory>().AsSingle();
+            
+            Container.Bind<IInitializable>().FromInstance(MovementTrajectoryViewer).AsSingle();
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TestTaskProject.Runtime.Gameplay
+namespace TestTaskProject.Gameplay
 {
     public class PlayableCharacter : MonoBehaviour
     {
-        private float speed;
+        private float speed = 1f;
 
         public event Action OnSpeedChanged;
 

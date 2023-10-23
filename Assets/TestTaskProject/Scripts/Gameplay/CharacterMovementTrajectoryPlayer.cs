@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
-using TestTaskProject.Runtime.Services;
+using TestTaskProject.Services;
 using UnityEngine;
 using Zenject;
 
-namespace TestTaskProject.Runtime.Gameplay
+namespace TestTaskProject.Gameplay
 {
     public class CharacterMovementTrajectoryPlayer : IInitializable
     {

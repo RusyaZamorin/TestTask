@@ -5,7 +5,7 @@ using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using Zenject;
 
-namespace TestTaskProject.Runtime.Gameplay
+namespace TestTaskProject.Gameplay
 {
     public class CharacterMover : IInitializable
     {
@@ -36,7 +36,7 @@ namespace TestTaskProject.Runtime.Gameplay
 
         private void UpdateMoveTween()
         {
-            if (moveTween == null || moveTween.IsActive())
+            if (moveTween == null)
                 return;
 
             moveTween?.Kill();
@@ -49,7 +49,8 @@ namespace TestTaskProject.Runtime.Gameplay
 
             moveTween = character.transform
                 .DOMove(targetPoint, duration)
-                .SetEase(Ease.Linear);
+                .SetEase(Ease.Linear)
+                .OnComplete(() => moveTween = null);
         }
     }
 }

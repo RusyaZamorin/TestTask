@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace TestTaskProject.Runtime.Services
+namespace TestTaskProject.Services
 {
     public class MonoBehaviourInputService : MonoBehaviour, IInputService, IPointerDownHandler, IPointerUpHandler
     {
